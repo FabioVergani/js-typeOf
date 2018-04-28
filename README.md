@@ -1,6 +1,6 @@
 # js-typeOf
 
-'''
+```
 console.log(typeof 37==='number');
 console.log(typeof 3.14==='number');
 console.log(typeof(42)==='number');
@@ -34,4 +34,4 @@ console.log(typeof new Function()==='function');
 console.log(typeof function(){}==='function');
 console.log(typeof class C{}==='function');
 console.log(typeof Math.sin==='function');
-'''
+```
