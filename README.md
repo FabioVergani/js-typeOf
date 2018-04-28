@@ -1,6 +1,20 @@
 # js-typeOf
 
 ```
+const typeOf=(o=>{
+	let f=x=>typeof x;
+	if(o && 'function'===typeof o){
+		const s='symbol';
+		if(s===typeof o.iterator){
+			const p=o.prototype;
+			f=x=>x && x.constructor===o && x!==p?s:typeof x
+		}
+	};
+	return f
+})(window.Symbol);
+
+
+
 console.log(typeof 37==='number');
 console.log(typeof 3.14==='number');
 console.log(typeof(42)==='number');
@@ -35,17 +49,6 @@ console.log(typeof function(){}==='function');
 console.log(typeof class C{}==='function');
 console.log(typeof Math.sin==='function');
 
-const typeOf=(o=>{
-	let f=x=>typeof(x);
-	if(o && typeof(o)==='function'){
-		const s='symbol';
-		if(typeof(o.iterator)===s){
-			const p=o.prototype;
-			f=x=>x && x.constructor===o && x!==p?s:typeof(x);
-		};
-	};
-	return f;
-})(window.Symbol);
 
 console.log(typeOf(37)==='number');
 console.log(typeOf(3.14)==='number');
