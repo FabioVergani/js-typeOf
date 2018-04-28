@@ -35,6 +35,18 @@ console.log(typeof function(){}==='function');
 console.log(typeof class C{}==='function');
 console.log(typeof Math.sin==='function');
 
+const typeOf=(o=>{
+	let f=x=>typeof(x);
+	if(o && typeof(o)==='function'){
+		const s='symbol';
+		if(typeof(o.iterator)===s){
+			const p=o.prototype;
+			f=x=>x && x.constructor===o && x!==p?s:typeof(x);
+		};
+	};
+	return f;
+})(window.Symbol);
+
 console.log(typeOf(37)==='number');
 console.log(typeOf(3.14)==='number');
 console.log(typeOf(42)==='number');
@@ -48,7 +60,7 @@ console.log(typeOf('1')==='string'); // note that a number within a string is st
 console.log(typeOf(String('abc'))==='string');
 console.log(typeOf(true)==='boolean');
 console.log(typeOf(false)==='boolean');
-console.log(typeOf(Boolean(true))==='boolean'); 
+console.log(typeOf(Boolean(true))==='boolean');
 console.log(typeOf(Symbol())==='symbol');
 console.log(typeOf(Symbol('foo'))==='symbol');
 console.log(typeOf(Symbol.iterator)==='symbol');
