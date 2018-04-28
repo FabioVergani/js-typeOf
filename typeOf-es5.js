@@ -1,11 +1,9 @@
 
 var typeOf=(function(o){
 	var p,f=function f(x){return typeof(x)};
-	if(o && typeof(o)==='function'){
-		if(typeof(o.iterator)==='symbol'){
-			p=o.prototype;
-			f=function(x){return x && x.constructor===o && x!==p?'symbol':typeof(x)};
-		};
+	if(o && typeof(o)==='function' && typeof(o.iterator)==='symbol'){
+		p=o.prototype;
+		f=function(x){return x && x.constructor===o && x!==p?'symbol':typeof(x)};
 	};
 	return f;
 })(window.Symbol);
